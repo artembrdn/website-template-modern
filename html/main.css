@@ -1,0 +1,163 @@
+html {
+  --topNavigationHeight: 56px;
+  --leftPanelWidth :0px;
+  --leftSidebarWidth: 300px;
+  --rightPanelWidth :0px;
+  --rightSidebarWidth :0px;
+  --leftSidebarBackground: #FAFBFC;
+}
+html, body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, img, pre, form, fieldset {
+  margin: 0;
+  padding: 0;
+}
+.siteHeaderWrap {
+  background-color: #FFFFFF;
+  color: #6B778C;
+  height: var(--topNavigationHeight, 0px);
+
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 201;
+}
+.siteHeader {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 100%;
+  position: relative;
+  background-color: #FFFFFF;
+  color: #6B778C;
+  z-index:999;
+}
+.siteHeader::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 4px;
+  background: linear-gradient(180deg,rgba(9,30,66,0.13) 0,rgba(9,30,66,0.13) 1px,rgba(9,30,66,0.08) 1px,rgba(9,30,66,0) 4px);
+}
+
+#siteMainView {
+  display: flex;
+  height: 100%;
+  position: relative;
+}
+#siteNav {
+  position: fixed;
+  top: calc(var(--bannerHeight,0px) + var(--topNavigationHeight,0px));
+  left: 0px;
+  bottom: 0px;
+  z-index: 200;
+  background-color: var(--leftSidebarBackground,white);
+}
+#siteNav:hover .siteNavButton-minimize{
+  opacity: 1;
+}
+.onNavOpened{
+  display: block;
+}
+.onNavClosed{
+  display: none;
+}
+.navClosed .onNavOpened{
+  display: none;
+}
+.navClosed .onNavClosed{
+  display: block;
+}
+.navClosed .siteNavButton-minimize{
+  opacity: 1;
+}
+#siteNavContent{
+  will-change: width;
+  
+  transition: width 300ms cubic-bezier(0.2, 0, 0, 1) 0s;
+  height:100%;
+  overflow: hidden;
+}
+.navClosed .navConent{
+  width: 20px;
+}
+.navConent, .navClosedHover .navConent{
+  width: 306px;
+}
+.css-button-svg-wrap {
+  position: absolute;
+  width: 60px;
+  height: 70px;
+  left: -20px;
+  top: -20px;
+  /* inset: -8px -12px -8px -8px; */
+}
+
+.siteNavRight {
+  bottom: 0px;
+  left: 100%;
+  position: absolute;
+  top: 0px;
+  transform: translateZ(0px);
+  width: 24px;
+  z-index: 3;
+}
+.siteNavRightBorder {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0.2) 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0) 100%);
+  bottom: 0px;
+  left: -3px;
+  opacity: 0.5;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  transition-duration: 0.22s;
+  transition-property: left, opacity, width;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  width: 3px;
+}
+#siteContent {
+  will-change: padding-left;
+  padding-left: calc(var(--leftSidebarWidth,0px) + 20px);
+  transition: padding-left 300ms cubic-bezier(0.2, 0, 0, 1) 0s;
+  padding-top: calc(var(--bannerHeight,0px) + var(--topNavigationHeight,0px));
+}
+.navClosed #siteContent{
+  padding-left: 35px;
+}
+
+
+
+.siteNavButton {
+  background: 0px center white;
+  border: 0px;
+  border-radius: 50%;
+  box-shadow: rgb(9 30 66 / 8%) 0px 0px 0px 1px, rgb(9 30 66 / 8%) 0px 2px 4px 1px;
+  color: rgb(107, 119, 140);
+  cursor: pointer;
+  height: 24px;
+  opacity: 0;
+  outline: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 32px;
+  transition: background-color 100ms linear 0s, color 100ms linear 0s, opacity 300ms cubic-bezier(0.2, 0, 0, 1) 0s, transform 300ms cubic-bezier(0.2, 0, 0, 1) 0s;
+  transform: translate(-50%);
+  width: 24px;
+}
+.siteNavButton:hover {
+  background-color: rgb(76, 154, 255);
+  color: white;
+}
+
+.siteNavButton-minimize {
+  top: 32px;
+}
+.siteNavButton-scroll {
+  top: 80px;
+  opacity: 1;
+}
