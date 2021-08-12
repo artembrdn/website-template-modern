@@ -159,5 +159,16 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, img, pre, form, fieldset
 }
 .siteNavButton-scroll {
   top: 80px;
+}
+.siteNavButton-scroll-active {
   opacity: 1;
+}
+.onNavScrollDown, .onNavScrollUp {
+  display:none;
+}
+.siteNavButton-scroll-down .onNavScrollDown {
+  display:block;
+}
+.siteNavButton-scroll-up .onNavScrollUp{
+  display:block;
 }
